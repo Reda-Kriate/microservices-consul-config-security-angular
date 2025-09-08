@@ -2,6 +2,7 @@ package reda.order_service.web;
 
 import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import reda.order_service.entities.Order;
 import reda.order_service.entities.ProductItems;
@@ -43,5 +44,17 @@ public class OrderController {
             });
             List<Order> ordersFinal = orderRepository.findAll();
         return ordersFinal;
+    }
+    @GetMapping("/fullOrders/{id}")
+    public Order orderById(@PathVariable Long id){
+        Order order = orderRepository.findById(id).get();
+        Customer customerById = customerRestFeign.findCustomerById(order.getCustomerId());
+        order.setCustomer(customerById);
+        order.getProductItems().forEach(p->{
+            ProductItems productItems = productItemsRepository.findById(id).get();
+            Product productById = productRestFeign.findProductById(productItems.getProductId());
+            p.setProduct(productById);
+        });
+        return orderRepository.findById(id).get();
     }
 }
