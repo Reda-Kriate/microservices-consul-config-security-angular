@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import reda.order_service.models.Product;
 
 @Entity
 @Data
@@ -22,4 +23,6 @@ public class ProductItems {
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Order order;
+    @Transient
+    private Product product;
 }

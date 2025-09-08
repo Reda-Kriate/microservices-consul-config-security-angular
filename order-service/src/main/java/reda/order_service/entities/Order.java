@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import reda.order_service.enums.OrderStatus;
+import reda.order_service.models.Customer;
 
 import java.util.Date;
 import java.util.List;
@@ -22,4 +23,6 @@ public class Order {
     private Long customerId;
     @OneToMany(mappedBy = "order")
     private List<ProductItems> productItems;
+    @Transient
+    private Customer customer;
 }
