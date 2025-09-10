@@ -1,6 +1,5 @@
 package reda.order_service.web;
 
-import org.springframework.hateoas.PagedModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +12,6 @@ import reda.order_service.models.Product;
 import reda.order_service.repositories.OrderRepository;
 import reda.order_service.repositories.ProductItemsRepository;
 
-import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -23,7 +21,10 @@ public class OrderController {
     private CustomerRestFeign customerRestFeign;
     private ProductRestFeign productRestFeign;
 
-    public OrderController(OrderRepository orderRepository, ProductItemsRepository productItemsRepository, CustomerRestFeign customerRestFeign, ProductRestFeign productRestFeign) {
+    public OrderController(OrderRepository orderRepository,
+                           ProductItemsRepository productItemsRepository,
+                           CustomerRestFeign customerRestFeign,
+                           ProductRestFeign productRestFeign) {
         this.orderRepository = orderRepository;
         this.productItemsRepository = productItemsRepository;
         this.customerRestFeign = customerRestFeign;
@@ -45,6 +46,7 @@ public class OrderController {
             List<Order> ordersFinal = orderRepository.findAll();
         return ordersFinal;
     }
+
     @GetMapping("/fullOrders/{id}")
     public Order orderById(@PathVariable Long id){
         Order order = orderRepository.findById(id).get();
