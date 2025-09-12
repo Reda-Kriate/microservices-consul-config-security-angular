@@ -20,4 +20,5 @@ public class ConsulConfigRestController {
     public Map<String, Object> getConsulConfig(){
         return Map.of("accessToken",accessToken,"refreshToken",refreshToken);
     }
+
 }
