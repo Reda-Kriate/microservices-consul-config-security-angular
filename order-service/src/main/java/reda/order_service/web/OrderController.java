@@ -53,8 +53,7 @@ public class OrderController {
         Customer customerById = customerRestFeign.findCustomerById(order.getCustomerId());
         order.setCustomer(customerById);
         order.getProductItems().forEach(p->{
-            ProductItems productItems = productItemsRepository.findById(id).get();
-            Product productById = productRestFeign.findProductById(productItems.getProductId());
+            Product productById = productRestFeign.findProductById(p.getProductId());
             p.setProduct(productById);
         });
         return orderRepository.findById(id).get();

@@ -43,9 +43,9 @@ public class OrderServiceApplication {
 			Long customerId = 1L;
 			Customer customer = customerRestFeign.findCustomerById(customerId);
 			Random random = new Random();
-			for (int i = 0; i < customers.size(); i++) {
+			for (int i = 0; i < 20; i++) {
 				Order order = Order.builder()
-						.customerId(customers.get(i).getId())
+						.customerId(customers.get(random.nextInt(customers.size())).getId())
 						.status(Math.random()>0.25 ? OrderStatus.CREATED :
 								Math.random()>0.5 ? OrderStatus.CANCELED :
 								Math.random()>0.75 ? OrderStatus.DELIVERED :
