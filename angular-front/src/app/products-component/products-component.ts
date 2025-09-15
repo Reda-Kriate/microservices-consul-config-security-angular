@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {NgForOf, NgIf} from '@angular/common';
 
@@ -11,7 +11,7 @@ import {NgForOf, NgIf} from '@angular/common';
   templateUrl: './products-component.html',
   styleUrl: './products-component.css'
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit{
   products:any;
   constructor(private http:HttpClient) {
   }

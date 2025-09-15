@@ -1,0 +1,18 @@
+<div class="container">
+  <table class="table" *ngIf="customers">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let customer of customers._embedded.customers">
+    <tr>
+      <td>{{customer.id}}</td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.email}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
