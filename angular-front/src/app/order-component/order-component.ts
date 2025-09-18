@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {NgForOf, NgIf} from '@angular/common';
+import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-order-component',
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    DatePipe
   ],
   templateUrl: './order-component.html',
   styleUrl: './order-component.css'
@@ -33,8 +34,5 @@ export class OrderComponent implements OnInit{
   getOrderDetail(order: any) {
     this.router.navigateByUrl("/orderDetails/"+order.id)
   }
-
-  getOrderId(order: any):number {
-    return order.id;
-  }
+  
 }

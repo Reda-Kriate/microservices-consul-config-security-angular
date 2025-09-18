@@ -10,9 +10,9 @@
     <tbody *ngFor="let order of orders._embedded.orders">
     <tr>
       <td>{{order.id}}</td>
-      <td>{{order.createdAt}}</td>
+      <td>{{order.createdAt | date : "dd/MM/yyyy" }}</td>
       <td>{{order.status}}</td>
-      <td><button class="btn-success" (click)="getOrderDetail(order);getOrderId(order)">Order Details</button></td>
+      <td><button class="btn-success" (click)="getOrderDetail(order)">Order Details</button></td>
     </tr>
     </tbody>
   </table>

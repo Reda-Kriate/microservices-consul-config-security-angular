@@ -1,3 +1,74 @@
 <div class="container" *ngIf="orderDetails">
-  {{orderDetails | json}}
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Order details
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item">
+              Order ID : {{orderDetails.id}}
+            </li>
+            <li class="list-group-item">
+              Date : {{orderDetails.createdAt}}
+            </li>
+            <li class="list-group-item">
+              Status : {{orderDetails.status}}
+            </li>
+            <li class="list-group-item">
+              Customer ID : {{orderDetails.customerId}}
+            </li>
+            <li class="list-group-item">
+              Customer Name : {{orderDetails.customer.name}}
+            </li>
+            <li class="list-group-item">
+              Customer Email : {{orderDetails.customer.email}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          Products details
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead class="tab-content">
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Discount</th>
+            </tr>
+            </thead>
+            <tbody class="tab-content" *ngFor="let p of orderDetails.productItems">
+            <tr>
+              <td>
+                {{ p.productId }}
+              </td>
+              <td>
+                {{ p.product.name }}
+              </td>
+              <td>
+                {{ p.quantity }}
+              </td>
+              <td class="text-end">
+                {{ p.price | number: '.2' }}
+              </td>
+              <td class="text-end">
+                {{ p.discount | number: '.2' }}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
 </div>
+</div>
+
