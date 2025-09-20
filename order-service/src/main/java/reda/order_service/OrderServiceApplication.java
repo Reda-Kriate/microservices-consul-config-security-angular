@@ -53,7 +53,8 @@ public class OrderServiceApplication {
 						.createdAt(new Date())
 						.build();
 				Order savedOrder = orderRepository.save(order);
-				for (int j = 0; j < products.size(); j++) {
+				int randomNumber = 1+ random.nextInt(7);
+				for (int j = 0; j < randomNumber; j++) {
 					ProductItems productItems = ProductItems.builder()
 							.productId(products.get(j).getId())
 							.order(savedOrder)

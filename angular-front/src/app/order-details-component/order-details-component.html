@@ -37,7 +37,7 @@
         </div>
         <div class="card-body">
           <table class="table">
-            <thead class="tab-content">
+            <thead class="tab-content bg-dark text-bg-success">
             <tr>
               <th>Product ID</th>
               <th>Product Name</th>
@@ -58,14 +58,22 @@
                 {{ p.quantity }}
               </td>
               <td class="text-end">
-                {{ p.price | number: '.2' }}
+                {{ p.price | number: '.2' }} DH
               </td>
               <td class="text-end">
-                {{ p.discount | number: '.2' }}
+                {{ p.discount | number: '.2' }} %
               </td>
             </tr>
             </tbody>
           </table>
+          <div class="card">
+            <div class="card-header text-end bg-dark text-bg-success ">
+              Products Total
+            </div>
+            <div class="card-body text-end">
+              {{orderDetails.total | number : '.2'}} DH
+            </div>
+          </div>
         </div>
       </div>
   </div>

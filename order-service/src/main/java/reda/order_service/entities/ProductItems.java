@@ -20,9 +20,14 @@ public class ProductItems {
     private double price;
     private int quantity;
     private double discount;
+    private double amount;
     @ManyToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Order order;
     @Transient
     private Product product;
+
+    public double getAmount(){
+        return price*quantity*(1-discount);
+    }
 }
